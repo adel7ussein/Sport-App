@@ -10,16 +10,20 @@ class CustomButton extends StatelessWidget {
       required this.textName,
       required this.heightOfButton,
       required this.widthOfButton,
+        this.fontSize = 13,
+        this.onTap
       });
   Color? backGroundFontColor;
   Color fontColor;
   String textName;
   double heightOfButton;
   double widthOfButton;
+  double fontSize ;
+  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           margin: const EdgeInsets.all(2.5),
           height: heightOfButton,
@@ -30,7 +34,7 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: CustomTextName(
               textName: textName,
-              fontSize: 12,
+              fontSize: fontSize,
               fontColor: fontColor,
             ),
           ),

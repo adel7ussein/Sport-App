@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'custom_container_content.dart';
@@ -5,9 +7,11 @@ import 'custom_container_content.dart';
 class CustomSmallCounter extends StatelessWidget {
   CustomSmallCounter({
     super.key,
-    required this.titleContainer
+    required this.titleContainer,
+    this.textDecoration = TextDecoration.none
   });
   String titleContainer;
+  TextDecoration? textDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +30,7 @@ class CustomSmallCounter extends StatelessWidget {
         child: CustomContainerContent(
           textName: titleContainer,
           fontSize: 30,
+          textDecoration: textDecoration,
         ),
       ),
     );
