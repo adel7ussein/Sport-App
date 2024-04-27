@@ -1,7 +1,7 @@
 abstract class CounterState {}
 
-class CounterAIncrementState extends CounterState {}
+class CounterOneIncrementState extends CounterState {}
 
-class CounterBIncrementState extends CounterState {}
+class CounterTwoIncrementState extends CounterState {}
 
 class CounterReset extends CounterState {}

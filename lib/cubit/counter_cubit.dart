@@ -3,31 +3,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
-  CounterCubit() : super(CounterAIncrementState());
+  CounterCubit() : super(CounterOneIncrementState());
   int playerOnePoint = 0;
   int playerTowPoint = 0;
   void playerIncrement({required int buttonNumber, required String playerName}) {
     if (playerName == 'one') {
       playerOnePoint += buttonNumber;
-      emit(CounterAIncrementState());
+      emit(CounterOneIncrementState());
     } else {
       playerTowPoint += buttonNumber;
-      emit(CounterBIncrementState());
+      emit(CounterTwoIncrementState());
     }
   }
 
   void playerDecrement({required int buttonNumber, required String playerName}) {
-    if (playerName == 'one') {
+    if (playerName == 'one' && playerOnePoint > 0) {
       playerOnePoint -= buttonNumber;
-      emit(CounterAIncrementState());
-    } else {
+      emit(CounterOneIncrementState());
+    } else if (playerName == 'two' && playerTowPoint > 0){
       playerTowPoint -= buttonNumber;
-      emit(CounterBIncrementState());
+      emit(CounterTwoIncrementState());
     }
   }
 
-  void teamsReset() {
-    playerTowPoint = 0;
+  void playersReset() {
+    playerOnePoint = 0;
     playerTowPoint = 0;
     emit(CounterReset());
   }

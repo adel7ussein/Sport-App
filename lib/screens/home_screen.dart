@@ -443,7 +443,10 @@ class HomeScreen extends StatelessWidget {
                                 textName: 'Serve',
                                 heightOfButton: 30,
                                 widthOfButton: 50),
-                            CustomButton(
+                            CustomButton(onTap: (){
+                              BlocProvider.of<CounterCubit>(context)
+                                  .playersReset();
+                            },
                                 backGroundFontColor: Colors.lightGreenAccent[100],
                                 fontColor: Colors.black87,
                                 textName: 'Reset',
