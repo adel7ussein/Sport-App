@@ -201,7 +201,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: (){
                                         BlocProvider.of<CounterCubit>(context)
-                                            .teamDecrement(buttonNumber: 1, teamName: 'one');
+                                            .playerDecrement(buttonNumber: 1, playerName: 'one');
                                       },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
@@ -217,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: (){
                                         BlocProvider.of<CounterCubit>(context)
-                                            .teamIncrement(buttonNumber: 1, teamName: 'one');
+                                            .playerIncrement(buttonNumber: 1, playerName: 'one');
                                       },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
@@ -335,6 +335,10 @@ class HomeScreen extends StatelessWidget {
                                         widthOfButton: 30),
                                     CustomOclock(),
                                     CustomButton(
+                                      onTap: (){
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .playerDecrement(buttonNumber: 1, playerName: 'two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '-',
@@ -347,6 +351,10 @@ class HomeScreen extends StatelessWidget {
                                       fontColor: Colors.green,
                                     ),
                                     CustomButton(
+                                      onTap: (){
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .playerIncrement(buttonNumber: 1, playerName: 'two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '+',

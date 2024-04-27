@@ -6,8 +6,8 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterAIncrementState());
   int playerOnePoint = 0;
   int playerTowPoint = 0;
-  void teamIncrement({required int buttonNumber, required String teamName}) {
-    if (teamName == 'one') {
+  void playerIncrement({required int buttonNumber, required String playerName}) {
+    if (playerName == 'one') {
       playerOnePoint += buttonNumber;
       emit(CounterAIncrementState());
     } else {
@@ -16,8 +16,8 @@ class CounterCubit extends Cubit<CounterState> {
     }
   }
 
-  void teamDecrement({required int buttonNumber, required String teamName}) {
-    if (teamName == 'one') {
+  void playerDecrement({required int buttonNumber, required String playerName}) {
+    if (playerName == 'one') {
       playerOnePoint -= buttonNumber;
       emit(CounterAIncrementState());
     } else {
