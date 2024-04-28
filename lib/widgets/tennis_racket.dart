@@ -11,8 +11,8 @@ class CustomTennisRacket extends StatelessWidget {
     return Visibility(
         visible: visibleValue,
         child: Container(
-          height: 30,
-          width: 30,
+          height: 40,
+          width: 40,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.fill,

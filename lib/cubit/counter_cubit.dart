@@ -6,8 +6,8 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterOneIncrementState());
   int playerOnePoint = 0;
   int playerTowPoint = 0;
-  bool shouldShowRightWidget = false;
-  bool shouldShowLeftWidget = false;
+  bool shouldShowRightCard = false;
+  bool shouldShowLeftCard = true;
 
   void pointsIncrement(
       {required int buttonNumber, required String playerName}) {
@@ -37,13 +37,9 @@ class CounterCubit extends Cubit<CounterState> {
     emit(CounterReset());
   }
 
-  void showWCard({required String side}) {
-    if (side == 'right') {
-      shouldShowRightWidget =! shouldShowRightWidget;
-      emit(RightSideState());
-    } else if (side == 'left') {
-      shouldShowLeftWidget =! shouldShowLeftWidget;
-      emit(LeftSideState());
-    }
+  void showTennisRacket() {
+    shouldShowLeftCard =! shouldShowLeftCard;
+    shouldShowRightCard =! shouldShowRightCard;
+    emit(TennisRacketState());
   }
 }

@@ -10,6 +10,7 @@ import '../widgets/custom_counters.dart';
 import '../widgets/custom_flag.dart';
 import '../widgets/custom_text_name.dart';
 import '../widgets/tennis_racket.dart';
+import '../widgets/tennis_racket_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -44,8 +45,10 @@ class HomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .2,
+                // Small and big Counters on the top of screen
+                Container(
+                  margin: const EdgeInsets.only(top: 3),
+                  height: 130,
                   child: Row(
                     children: [
                       CustomBigCounter(
@@ -62,6 +65,22 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10,left: 41,right: 41),
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Show left tennis racket
+                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
+                          .shouldShowLeftCard,),
+                      // Show right tennis racket
+                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
+                          .shouldShowRightCard,),
+                    ],
+                  ),
+                ),
+                // Two Flags and the Names of countries
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -95,20 +114,6 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ],
-                ),
-                SizedBox(
-                  height: 30,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Show left tennis racket
-                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
-                      .shouldShowLeftWidget,),
-                      // Show right tennis racket
-                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
-                          .shouldShowRightWidget,),
-                    ],
-                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 5),
@@ -144,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   width: MediaQuery.of(context).size.width,
-                  height: 240,
+                  height: 245,
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     border: Border.all(
@@ -199,8 +204,7 @@ class HomeScreen extends StatelessWidget {
                                     // left W-Card Button
                                     CustomButton(
                                         onTap: () {
-                                          BlocProvider.of<CounterCubit>(context)
-                                              .showWCard(side: 'left');
+
                                         },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
@@ -344,8 +348,7 @@ class HomeScreen extends StatelessWidget {
                                     // right W-Card Button
                                     CustomButton(
                                       onTap: (){
-                                        BlocProvider.of<CounterCubit>(context)
-                                            .showWCard(side: 'right');
+
                                       },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
@@ -476,6 +479,8 @@ class HomeScreen extends StatelessWidget {
                                 textName: 'Serve',
                                 heightOfButton: 30,
                                 widthOfButton: 50),
+                            TennisRacketButton(heightOfButton: 30,widthOfButton: 40,onTap: (){BlocProvider.of<CounterCubit>(context)
+                                .showTennisRacket();},),
                             CustomButton(
                                 onTap: () {
                                   BlocProvider.of<CounterCubit>(context)
