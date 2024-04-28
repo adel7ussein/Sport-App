@@ -5,5 +5,6 @@ class Assets {
   static const String imagesClock = 'assets/images/clock.png';
   static const String imagesSaudiArabia = 'assets/images/saudi-arabia.png';
   static const String imagesSouthKorean = 'assets/images/south-korean.jpg';
+  static const String imagesTennisracket = 'assets/images/tennisracket.png';
 
 }

@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
   void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
         onTap: onTap,
         child: Container(
           margin: const EdgeInsets.all(2.5),

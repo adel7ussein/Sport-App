@@ -6,7 +6,11 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterOneIncrementState());
   int playerOnePoint = 0;
   int playerTowPoint = 0;
-  void playerIncrement({required int buttonNumber, required String playerName}) {
+  bool shouldShowRightWidget = false;
+  bool shouldShowLeftWidget = false;
+
+  void pointsIncrement(
+      {required int buttonNumber, required String playerName}) {
     if (playerName == 'one') {
       playerOnePoint += buttonNumber;
       emit(CounterOneIncrementState());
@@ -16,11 +20,12 @@ class CounterCubit extends Cubit<CounterState> {
     }
   }
 
-  void playerDecrement({required int buttonNumber, required String playerName}) {
+  void pointsDecrement(
+      {required int buttonNumber, required String playerName}) {
     if (playerName == 'one' && playerOnePoint > 0) {
       playerOnePoint -= buttonNumber;
       emit(CounterOneIncrementState());
-    } else if (playerName == 'two' && playerTowPoint > 0){
+    } else if (playerName == 'two' && playerTowPoint > 0) {
       playerTowPoint -= buttonNumber;
       emit(CounterTwoIncrementState());
     }
@@ -30,5 +35,15 @@ class CounterCubit extends Cubit<CounterState> {
     playerOnePoint = 0;
     playerTowPoint = 0;
     emit(CounterReset());
+  }
+
+  void showWCard({required String side}) {
+    if (side == 'right') {
+      shouldShowRightWidget =! shouldShowRightWidget;
+      emit(RightSideState());
+    } else if (side == 'left') {
+      shouldShowLeftWidget =! shouldShowLeftWidget;
+      emit(LeftSideState());
+    }
   }
 }
