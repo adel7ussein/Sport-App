@@ -11,6 +11,8 @@ class CustomButtonWithBorder extends StatelessWidget {
     required this.heightOfButton,
     required this.widthOfButton,
     required this.borderColor,
+    this.onTap
+
   });
   Color? backGroundFontColor;
   Color fontColor;
@@ -18,10 +20,12 @@ class CustomButtonWithBorder extends StatelessWidget {
   double heightOfButton;
   double widthOfButton;
   Color borderColor;
+  void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {},
+    return InkWell(
+        onTap: onTap,
         child: Container(
           margin: const EdgeInsets.all(2.5),
           height: heightOfButton,

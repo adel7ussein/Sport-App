@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sport_app/cubit/counter_cubit.dart';
 import 'package:sport_app/cubit/counter_state.dart';
@@ -11,6 +14,8 @@ import '../widgets/custom_flag.dart';
 import '../widgets/custom_text_name.dart';
 import '../widgets/tennis_racket.dart';
 import '../widgets/tennis_racket_button.dart';
+import '../widgets/yellow_card.dart';
+import '../widgets/yellow_red_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -93,33 +98,70 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Row(
                       children: [
-                        CustomFlag(
-                          imagePath: 'assets/images/south-korean.jpg',
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            YellowCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).showYellowCardOne,
+                            ),
+                            YellowRedCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).yr1One,
+                            ),
+                            YellowRedCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).yr2One,
+                            ),
+                          ],
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        CustomTextName(
-                          textName: 'South Korea',
-                          fontSize: 20,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomFlag(
+                              imagePath: 'assets/images/south-korean.jpg',
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            CustomTextName(
+                              textName: 'South Korea',
+                              fontSize: 17,
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    Column(
+                    Row(
                       children: [
-                        CustomFlag(
-                          imagePath: 'assets/images/saudi-arabia.png',
+                        Column(
+                          children: [
+                            CustomFlag(
+                              imagePath: 'assets/images/saudi-arabia.png',
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            CustomTextName(
+                              textName: 'Saudi Arabia',
+                              fontSize: 17,
+                            )
+                          ],
                         ),
-                        const SizedBox(
-                          height: 5,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            YellowCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).showYellowCardTwo,
+                            ),
+                            YellowRedCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).yr1Two,
+                            ),
+                            YellowRedCard(
+                              visibleValue: BlocProvider.of<CounterCubit>(context).yr2Two,
+                            ),
+                          ],
                         ),
-                        CustomTextName(
-                          textName: 'Saudi Arabia',
-                          fontSize: 20,
-                        )
+
                       ],
                     ),
                   ],
@@ -279,6 +321,9 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButtonWithBorder(
+                                      onTap: (){
+                                        BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr1one');
+                                      },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 1',
@@ -286,7 +331,9 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder(
+                                    CustomButtonWithBorder( onTap: (){
+                                      BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr2one');
+                                    },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 2',
@@ -295,6 +342,9 @@ class HomeScreen extends StatelessWidget {
                                       borderColor: Colors.white,
                                     ),
                                     CustomButtonWithBorder(
+                                      onTap: (){
+                                        BlocProvider.of<CounterCubit>(context).showYellowCard(nameCard: 'one');
+                                      },
                                       backGroundFontColor: Colors.yellowAccent,
                                       fontColor: Colors.black87,
                                       textName: 'Y',
@@ -445,6 +495,9 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButtonWithBorder(
+                                      onTap: (){
+                                        BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr1two');
+                                      },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 1',
@@ -452,7 +505,9 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder(
+                                    CustomButtonWithBorder(onTap: (){
+                                      BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr2two');
+                                    },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 2',
@@ -460,7 +515,9 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder(
+                                    CustomButtonWithBorder(onTap: (){
+                                      BlocProvider.of<CounterCubit>(context).showYellowCard(nameCard: 'two');
+                                    },
                                       backGroundFontColor: Colors.yellowAccent,
                                       fontColor: Colors.black87,
                                       textName: 'Y',

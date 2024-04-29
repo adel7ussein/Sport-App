@@ -11,3 +11,9 @@ class TennisRacketState extends CounterState {}
 class GameIncrementState extends CounterState  {}
 
 class GameDecrementState extends CounterState  {}
+
+class ShowYellowCardState extends CounterState  {}
+
+class ShowYRCardState extends CounterState  {}
+
+

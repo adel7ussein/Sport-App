@@ -15,25 +15,29 @@ class CounterCubit extends Cubit<CounterState> {
   int matchOne = 00;
   int matchTwo = 00;
 
+  bool showYellowCardOne = false;
+  bool showYellowCardTwo = false;
+
+  bool yr1One = false;
+  bool yr2One = false;
+  bool yr1Two = false;
+  bool yr2Two = false;
+
   void counterIncrement(
       {required int buttonNumber, required String playerName}) {
     if (playerName == 'one') {
       playerOnePoint += buttonNumber;
       emit(CounterIncrementState());
-    }
-    else if (playerName == 'two'){
+    } else if (playerName == 'two') {
       playerTowPoint += buttonNumber;
       emit(CounterIncrementState());
-    }
-    else if (playerName == 'match one') {
+    } else if (playerName == 'match one') {
       matchOne += buttonNumber;
       emit(CounterIncrementState());
-    }
-    else if (playerName == 'match two') {
+    } else if (playerName == 'match two') {
       matchTwo += buttonNumber;
       emit(CounterIncrementState());
     }
-
   }
 
   void counterDecrement(
@@ -44,12 +48,10 @@ class CounterCubit extends Cubit<CounterState> {
     } else if (playerName == 'two' && playerTowPoint > 0) {
       playerTowPoint -= buttonNumber;
       emit(CounterDecrementState());
-    }
-    else if (playerName == 'match one' && matchOne > 0) {
+    } else if (playerName == 'match one' && matchOne > 0) {
       matchOne -= buttonNumber;
       emit(CounterDecrementState());
-    }
-    else if (playerName == 'match two' && matchTwo > 0) {
+    } else if (playerName == 'match two' && matchTwo > 0) {
       matchTwo -= buttonNumber;
       emit(CounterDecrementState());
     }
@@ -84,6 +86,32 @@ class CounterCubit extends Cubit<CounterState> {
     } else if (playerName == 'two' && gameTwo > 0) {
       gameTwo -= buttonNumber;
       emit(GameDecrementState());
+    }
+  }
+
+  void showYR({required String nameCard}) {
+    if (nameCard == 'yr1one') {
+      yr1One = !yr1One;
+      emit(ShowYRCardState());
+    } else if (nameCard == 'yr1two') {
+      yr1Two = !yr1Two;
+      emit(ShowYRCardState());
+    } else if (nameCard == 'yr2one') {
+      yr2One = !yr2One;
+      emit(ShowYRCardState());
+    } else if (nameCard == 'yr2two') {
+      yr2Two = !yr2Two;
+      emit(ShowYRCardState());
+    }
+  }
+
+  void showYellowCard({required String nameCard}) {
+    if (nameCard == 'one') {
+      showYellowCardOne = !showYellowCardOne;
+      emit(ShowYellowCardState());
+    } else if (nameCard == 'two') {
+      showYellowCardTwo = !showYellowCardTwo;
+      emit(ShowYellowCardState());
     }
   }
 }

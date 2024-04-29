@@ -9,8 +9,9 @@ class CustomFlag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 150,
+      margin: const EdgeInsets.all(4),
+      height: 80,
+      width: 120,
       decoration:  BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
