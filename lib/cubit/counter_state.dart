@@ -1,9 +1,13 @@
 abstract class CounterState {}
 
-class CounterOneIncrementState extends CounterState {}
+class CounterIncrementState extends CounterState {}
 
-class CounterTwoIncrementState extends CounterState {}
+class CounterDecrementState extends CounterState {}
 
 class CounterReset extends CounterState {}
 
 class TennisRacketState extends CounterState {}
+
+class GameIncrementState extends CounterState  {}
+
+class GameDecrementState extends CounterState  {}

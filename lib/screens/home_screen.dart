@@ -56,9 +56,13 @@ class HomeScreen extends StatelessWidget {
                             '${BlocProvider.of<CounterCubit>(context).playerOnePoint}',
                       ),
                       CustomSmallCounter(
-                        titleContainer: '00',
+                        titleContainer:
+                            '${BlocProvider.of<CounterCubit>(context).gameOne}',
                       ),
-                      CustomSmallCounter(titleContainer: '01'),
+                      CustomSmallCounter(
+                        titleContainer:
+                            '${BlocProvider.of<CounterCubit>(context).gameTwo}',
+                      ),
                       CustomBigCounter(
                           titleContainer:
                               '${BlocProvider.of<CounterCubit>(context).playerTowPoint}')
@@ -66,17 +70,22 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(bottom: 10,left: 41,right: 41),
+                  margin:
+                      const EdgeInsets.only(bottom: 10, left: 41, right: 41),
                   height: 50,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Show left tennis racket
-                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
-                          .shouldShowLeftCard,),
+                      CustomTennisRacket(
+                        visibleValue: BlocProvider.of<CounterCubit>(context)
+                            .shouldShowLeftCard,
+                      ),
                       // Show right tennis racket
-                      CustomTennisRacket(visibleValue: BlocProvider.of<CounterCubit>(context)
-                          .shouldShowRightCard,),
+                      CustomTennisRacket(
+                        visibleValue: BlocProvider.of<CounterCubit>(context)
+                            .shouldShowRightCard,
+                      ),
                     ],
                   ),
                 ),
@@ -131,13 +140,15 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomContainerContent(
-                        textName: '00',
+                        textName:
+                            '${BlocProvider.of<CounterCubit>(context).matchOne}',
                         fontSize: 40,
                         textColor: Colors.white,
                         textDecoration: TextDecoration.underline,
                       ),
                       CustomContainerContent(
-                        textName: '01',
+                        textName:
+                            '${BlocProvider.of<CounterCubit>(context).matchTwo}',
                         fontSize: 40,
                         textColor: Colors.white,
                         textDecoration: TextDecoration.underline,
@@ -181,6 +192,12 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .gameDecrement(
+                                                buttonNumber: 1,
+                                                playerName: 'one');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '-',
@@ -194,6 +211,12 @@ class HomeScreen extends StatelessWidget {
                                       fontColor: Colors.red,
                                     ),
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .gameIncrement(
+                                                buttonNumber: 1,
+                                                playerName: 'one');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '+',
@@ -203,9 +226,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     // left W-Card Button
                                     CustomButton(
-                                        onTap: () {
-
-                                        },
+                                        onTap: () {},
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
                                         textName: 'W Card',
@@ -225,7 +246,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
-                                            .pointsDecrement(
+                                            .counterDecrement(
                                                 buttonNumber: 1,
                                                 playerName: 'one');
                                       },
@@ -243,7 +264,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
-                                            .pointsIncrement(
+                                            .counterIncrement(
                                                 buttonNumber: 1,
                                                 playerName: 'one');
                                       },
@@ -286,6 +307,12 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .counterDecrement(
+                                                buttonNumber: 1,
+                                                playerName: 'match one');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '-',
@@ -298,6 +325,12 @@ class HomeScreen extends StatelessWidget {
                                       fontColor: Colors.green,
                                     ),
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .counterIncrement(
+                                                buttonNumber: 1,
+                                                playerName: 'match one');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '+',
@@ -325,6 +358,12 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .gameDecrement(
+                                                buttonNumber: 1,
+                                                playerName: 'two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '-',
@@ -338,6 +377,12 @@ class HomeScreen extends StatelessWidget {
                                       fontColor: Colors.red,
                                     ),
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .gameIncrement(
+                                                buttonNumber: 1,
+                                                playerName: 'two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '+',
@@ -347,9 +392,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     // right W-Card Button
                                     CustomButton(
-                                      onTap: (){
-
-                                      },
+                                        onTap: () {},
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
                                         textName: 'W Card',
@@ -369,7 +412,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
-                                            .pointsDecrement(
+                                            .counterDecrement(
                                                 buttonNumber: 1,
                                                 playerName: 'two');
                                       },
@@ -387,7 +430,7 @@ class HomeScreen extends StatelessWidget {
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
-                                            .pointsIncrement(
+                                            .counterIncrement(
                                                 buttonNumber: 1,
                                                 playerName: 'two');
                                       },
@@ -430,6 +473,12 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .counterDecrement(
+                                                buttonNumber: 1,
+                                                playerName: 'match two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '-',
@@ -442,6 +491,12 @@ class HomeScreen extends StatelessWidget {
                                       fontColor: Colors.green,
                                     ),
                                     CustomButton(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .counterIncrement(
+                                                buttonNumber: 1,
+                                                playerName: 'match two');
+                                      },
                                       heightOfButton: 20,
                                       widthOfButton: 30,
                                       textName: '+',
@@ -479,8 +534,14 @@ class HomeScreen extends StatelessWidget {
                                 textName: 'Serve',
                                 heightOfButton: 30,
                                 widthOfButton: 50),
-                            TennisRacketButton(heightOfButton: 30,widthOfButton: 40,onTap: (){BlocProvider.of<CounterCubit>(context)
-                                .showTennisRacket();},),
+                            TennisRacketButton(
+                              heightOfButton: 30,
+                              widthOfButton: 40,
+                              onTap: () {
+                                BlocProvider.of<CounterCubit>(context)
+                                    .showTennisRacket();
+                              },
+                            ),
                             CustomButton(
                                 onTap: () {
                                   BlocProvider.of<CounterCubit>(context)
@@ -515,4 +576,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
