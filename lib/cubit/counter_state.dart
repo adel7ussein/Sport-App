@@ -16,4 +16,6 @@ class ShowYellowCardState extends CounterState  {}
 
 class ShowYRCardState extends CounterState  {}
 
+class ShowTimeOutCardState extends CounterState  {}
+
 

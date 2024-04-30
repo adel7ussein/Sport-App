@@ -18,7 +18,7 @@ class CustomSmallCounter extends StatelessWidget {
     return Container(
       height: 50,
       width: 50,
-      margin: const EdgeInsets.only(right: 5, left: 5, bottom: 80),
+      margin: const EdgeInsets.only(right: 5, left: 5, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(

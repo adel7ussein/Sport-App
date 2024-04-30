@@ -23,6 +23,9 @@ class CounterCubit extends Cubit<CounterState> {
   bool yr1Two = false;
   bool yr2Two = false;
 
+  bool timeOutCard1 = false ;
+  bool timeOutCard2 = false ;
+
   void counterIncrement(
       {required int buttonNumber, required String playerName}) {
     if (playerName == 'one') {
@@ -112,6 +115,16 @@ class CounterCubit extends Cubit<CounterState> {
     } else if (nameCard == 'two') {
       showYellowCardTwo = !showYellowCardTwo;
       emit(ShowYellowCardState());
+    }
+  }
+
+  void showTimeOutCard({required String nameCard}) {
+    if (nameCard == 'one') {
+      timeOutCard1 = !timeOutCard1;
+      emit(ShowTimeOutCardState());
+    } else if (nameCard == 'two') {
+      timeOutCard2 = !timeOutCard2;
+      emit(ShowTimeOutCardState());
     }
   }
 }

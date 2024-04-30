@@ -14,6 +14,7 @@ import '../widgets/custom_flag.dart';
 import '../widgets/custom_text_name.dart';
 import '../widgets/tennis_racket.dart';
 import '../widgets/tennis_racket_button.dart';
+import '../widgets/time_out_card.dart';
 import '../widgets/yellow_card.dart';
 import '../widgets/yellow_red_card.dart';
 
@@ -60,13 +61,29 @@ class HomeScreen extends StatelessWidget {
                         titleContainer:
                             '${BlocProvider.of<CounterCubit>(context).playerOnePoint}',
                       ),
-                      CustomSmallCounter(
-                        titleContainer:
-                            '${BlocProvider.of<CounterCubit>(context).gameOne}',
+                      Column(
+                        children: [
+                          CustomSmallCounter(
+                            titleContainer:
+                                '${BlocProvider.of<CounterCubit>(context).gameOne}',
+                          ),
+                          TimeOutCard(
+                            visibleValue: BlocProvider.of<CounterCubit>(context)
+                                .timeOutCard1,
+                          )
+                        ],
                       ),
-                      CustomSmallCounter(
-                        titleContainer:
-                            '${BlocProvider.of<CounterCubit>(context).gameTwo}',
+                      Column(
+                        children: [
+                          CustomSmallCounter(
+                            titleContainer:
+                                '${BlocProvider.of<CounterCubit>(context).gameTwo}',
+                          ),
+                          TimeOutCard(
+                            visibleValue: BlocProvider.of<CounterCubit>(context)
+                                .timeOutCard2,
+                          )
+                        ],
                       ),
                       CustomBigCounter(
                           titleContainer:
@@ -104,13 +121,17 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             YellowCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).showYellowCardOne,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context)
+                                      .showYellowCardOne,
                             ),
                             YellowRedCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).yr1One,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context).yr1One,
                             ),
                             YellowRedCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).yr2One,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context).yr2One,
                             ),
                           ],
                         ),
@@ -151,17 +172,20 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             YellowCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).showYellowCardTwo,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context)
+                                      .showYellowCardTwo,
                             ),
                             YellowRedCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).yr1Two,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context).yr1Two,
                             ),
                             YellowRedCard(
-                              visibleValue: BlocProvider.of<CounterCubit>(context).yr2Two,
+                              visibleValue:
+                                  BlocProvider.of<CounterCubit>(context).yr2Two,
                             ),
                           ],
                         ),
-
                       ],
                     ),
                   ],
@@ -268,7 +292,10 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     // left W-Card Button
                                     CustomButton(
-                                        onTap: () {},
+                                        onTap: () {
+                                          BlocProvider.of<CounterCubit>(context)
+                                              .showTimeOutCard(nameCard: 'one');
+                                        },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
                                         textName: 'W Card',
@@ -321,8 +348,9 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButtonWithBorder(
-                                      onTap: (){
-                                        BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr1one');
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYR(nameCard: 'yr1one');
                                       },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
@@ -331,9 +359,11 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder( onTap: (){
-                                      BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr2one');
-                                    },
+                                    CustomButtonWithBorder(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYR(nameCard: 'yr2one');
+                                      },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 2',
@@ -342,8 +372,9 @@ class HomeScreen extends StatelessWidget {
                                       borderColor: Colors.white,
                                     ),
                                     CustomButtonWithBorder(
-                                      onTap: (){
-                                        BlocProvider.of<CounterCubit>(context).showYellowCard(nameCard: 'one');
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYellowCard(nameCard: 'one');
                                       },
                                       backGroundFontColor: Colors.yellowAccent,
                                       fontColor: Colors.black87,
@@ -442,7 +473,10 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     // right W-Card Button
                                     CustomButton(
-                                        onTap: () {},
+                                        onTap: () {
+                                          BlocProvider.of<CounterCubit>(context)
+                                              .showTimeOutCard(nameCard: 'two');
+                                        },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.white,
                                         textName: 'W Card',
@@ -495,8 +529,9 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButtonWithBorder(
-                                      onTap: (){
-                                        BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr1two');
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYR(nameCard: 'yr1two');
                                       },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
@@ -505,9 +540,11 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder(onTap: (){
-                                      BlocProvider.of<CounterCubit>(context).showYR(nameCard: 'yr2two');
-                                    },
+                                    CustomButtonWithBorder(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYR(nameCard: 'yr2two');
+                                      },
                                       backGroundFontColor: Colors.red,
                                       fontColor: Colors.white,
                                       textName: 'Y R 2',
@@ -515,9 +552,11 @@ class HomeScreen extends StatelessWidget {
                                       widthOfButton: 40,
                                       borderColor: Colors.white,
                                     ),
-                                    CustomButtonWithBorder(onTap: (){
-                                      BlocProvider.of<CounterCubit>(context).showYellowCard(nameCard: 'two');
-                                    },
+                                    CustomButtonWithBorder(
+                                      onTap: () {
+                                        BlocProvider.of<CounterCubit>(context)
+                                            .showYellowCard(nameCard: 'two');
+                                      },
                                       backGroundFontColor: Colors.yellowAccent,
                                       fontColor: Colors.black87,
                                       textName: 'Y',
