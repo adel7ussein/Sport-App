@@ -18,4 +18,9 @@ class ShowYRCardState extends CounterState  {}
 
 class ShowTimeOutCardState extends CounterState  {}
 
+class StartTimerStates extends CounterState {}
+
+class CancelTimerStates extends CounterState {}
+
+
 

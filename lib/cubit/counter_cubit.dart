@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'counter_state.dart';
@@ -23,8 +25,13 @@ class CounterCubit extends Cubit<CounterState> {
   bool yr1Two = false;
   bool yr2Two = false;
 
-  bool timeOutCard1 = false ;
-  bool timeOutCard2 = false ;
+  bool timeOutCard1 = false;
+  bool timeOutCard2 = false;
+
+  int start = 0;
+  Timer? timer;
+  bool timeCounter1 = false;
+  bool timeCounter2 = false;
 
   void counterIncrement(
       {required int buttonNumber, required String playerName}) {
@@ -126,5 +133,35 @@ class CounterCubit extends Cubit<CounterState> {
       timeOutCard2 = !timeOutCard2;
       emit(ShowTimeOutCardState());
     }
+  }
+
+  void startTimer({required String timerName}) {
+    start = 61;
+    if (timerName == 'one') {
+      timeCounter1 = true;
+    } else if (timerName == 'two') {
+      timeCounter2 = true;
+    }
+    timer = Timer.periodic(
+        const Duration(
+          seconds: 1,
+        ), (timer) {
+      if (start <= 0) {
+        timer.cancel();
+        emit(CancelTimerStates()); // Emit state for timer completion
+      } else {
+        start--; // Decrement start by 1 every second
+
+        emit(StartTimerStates()); // Emit state with updated time remaining
+      }
+    });
+  }
+
+  void cancelTimer() {
+    start = 0;
+    timeCounter1 = false;
+    timeCounter2 = false;
+    timer?.cancel();
+    emit(CancelTimerStates());
   }
 }

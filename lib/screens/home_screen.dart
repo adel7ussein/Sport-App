@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sport_app/cubit/counter_cubit.dart';
 import 'package:sport_app/cubit/counter_state.dart';
@@ -12,6 +9,7 @@ import '../widgets/custom_container_content.dart';
 import '../widgets/custom_counters.dart';
 import '../widgets/custom_flag.dart';
 import '../widgets/custom_text_name.dart';
+import '../widgets/custom_timer.dart';
 import '../widgets/tennis_racket.dart';
 import '../widgets/tennis_racket_button.dart';
 import '../widgets/time_out_card.dart';
@@ -70,6 +68,12 @@ class HomeScreen extends StatelessWidget {
                           TimeOutCard(
                             visibleValue: BlocProvider.of<CounterCubit>(context)
                                 .timeOutCard1,
+                          ),
+                          TimeCounter(
+                            isVisible: BlocProvider.of<CounterCubit>(context)
+                                .timeCounter1,
+                            timerValue:
+                                '${BlocProvider.of<CounterCubit>(context).start}',
                           )
                         ],
                       ),
@@ -82,6 +86,12 @@ class HomeScreen extends StatelessWidget {
                           TimeOutCard(
                             visibleValue: BlocProvider.of<CounterCubit>(context)
                                 .timeOutCard2,
+                          ),
+                          TimeCounter(
+                            isVisible: BlocProvider.of<CounterCubit>(context)
+                                .timeCounter2,
+                            timerValue:
+                                '${BlocProvider.of<CounterCubit>(context).start}',
                           )
                         ],
                       ),
@@ -306,12 +316,16 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                        onTap: () {
+                                          BlocProvider.of<CounterCubit>(context)
+                                              .startTimer(timerName: 'one');
+                                        },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.black45,
                                         textName: 'TO',
                                         heightOfButton: 20,
                                         widthOfButton: 30),
-                                    CustomOclock(),
+                                    const CustomClock(),
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
@@ -487,12 +501,16 @@ class HomeScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     CustomButton(
+                                        onTap: () {
+                                          BlocProvider.of<CounterCubit>(context)
+                                              .startTimer(timerName: 'two');
+                                        },
                                         backGroundFontColor: Colors.green,
                                         fontColor: Colors.black45,
                                         textName: 'TO',
                                         heightOfButton: 20,
                                         widthOfButton: 30),
-                                    CustomOclock(),
+                                    const CustomClock(),
                                     CustomButton(
                                       onTap: () {
                                         BlocProvider.of<CounterCubit>(context)
@@ -650,6 +668,9 @@ class HomeScreen extends StatelessWidget {
                                 heightOfButton: 30,
                                 widthOfButton: 50),
                             CustomButton(
+                              onTap: (){
+                                BlocProvider.of<CounterCubit>(context).cancelTimer();
+                              },
                               backGroundFontColor: Colors.lightGreenAccent[100],
                               fontColor: Colors.black87,
                               textName: 'Cancel time',
